@@ -1,10 +1,31 @@
-const l = '<i class="fa-regular fa-heart"></i> ',
-        c = '<i class="fa-regular fa-comments"></i> ',
-         s = '<i class="fa-regular fa-share-from-square"></i> ';
-let v = '10k';
+let l = c = s = 0;
 let likes = document.getElementById('likes');
 let comments = document.getElementById('comments');
 let shares = document.getElementById('shares');
-likes.innerHTML = l + v;
-comments.innerHTML = c + v;
-shares.innerHTML = s + v;
+
+const tLikes = 20, tComments = 10, tShares = 5;
+
+const iSpeed = 100;
+
+function animateCount(element, target){
+    let count = 0;
+    const interval = setInterval(() => {
+        if(count < target){
+            count++;
+            element.innerHTML = count;
+        } else{
+            clearInterval(interval);
+        }
+    }, iSpeed);
+}
+window.onload = () => {
+    animateCount(likes, tLikes);
+    animateCount(comments, tComments);
+    animateCount(shares, tShares);
+};
+
+
+//buttons behavior
+function fun(){
+    alert('link goes to portfolio / contact');
+}
